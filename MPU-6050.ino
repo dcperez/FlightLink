@@ -1,6 +1,5 @@
-// MPU-6050 Short Example Sketch
-//www.elegoo.com
-//2016.12.9
+// MPU-6050 Sketch
+//V1.0
 
 #include<Wire.h>
 const int MPU_addr=0x68;  // I2C address of the MPU-6050
@@ -29,9 +28,9 @@ void loop(){
   Serial.print(" | AcX = "); Serial.print(AcX/16384); Serial.print(" g");
   Serial.print(" | AcY = "); Serial.print(AcY/16384); Serial.print(" g");
   Serial.print(" | AcZ = "); Serial.print(AcZ/16384); Serial.print(" g");
-  Serial.print(" | Tmp = "); Serial.print(Tmp/340.00+36.53); //Serial.print("°C");
-  Serial.print(" | GyX = "); Serial.print(GyX/131); Serial.print(" °/s");
-  Serial.print(" | GyY = "); Serial.print(GyY/131); Serial.print(" °/s");
-  Serial.print(" | GyZ = "); Serial.println(GyZ/131); Serial.print(" °/s");
+  Serial.print(" | Tmp = "); Serial.print(Tmp/340.00+36.53); Serial.print("°C");
+  Serial.print(" | GyX = "); Serial.print(GyX/131); Serial.print("°/s");
+  Serial.print(" | GyY = "); Serial.print(GyY/131); Serial.print("°/s");
+  Serial.print(" | GyZ = "); Serial.println(GyZ/131); Serial.print("°/s");
   
 }
