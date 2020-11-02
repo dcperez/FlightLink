@@ -1,5 +1,5 @@
 // MPU-6050 Sketch
-//V1.1
+//V1.2
 
 #include<Wire.h>
 #include <LiquidCrystal.h>
@@ -37,12 +37,20 @@ void loop(){
   GyY=Wire.read()<<8|Wire.read();  // 0x45 (GYRO_YOUT_H) & 0x46 (GYRO_YOUT_L)
   GyZ=Wire.read()<<8|Wire.read();  // 0x47 (GYRO_ZOUT_H) & 0x48 (GYRO_ZOUT_L)
 
+  // Display accelerameter data
   Serial.print(" | AcX = "); Serial.print(AcX/16384); Serial.print(" g");
   Serial.print(" | AcY = "); Serial.print(AcY/16384); Serial.print(" g");
   Serial.print(" | AcZ = "); Serial.print(AcZ/16384); Serial.print(" g");
-  lcd.print(" | Tmp = "); lcd.print((Tmp/340.00+36.53)*(1.8)+32); lcd.print("°F");
+
+  // Display temperature data
+  lcd.print(" | Tmp = "); lcd.print((Tmp/340.00+36.53)*(1.8)+32); lcd.print("°F"); // temperature conversion to fahrenheit
+
+  // Display gyro data
   Serial.print(" | GyX = "); Serial.print(GyX/131); Serial.print("°/s");
   Serial.print(" | GyY = "); Serial.print(GyY/131); Serial.print("°/s");
   Serial.print(" | GyZ = "); Serial.print(GyZ/131); Serial.println("°/s");
-  
+
+  // Delay and clear lcd
+  delay(1000);
+  lcd.clear();
 }
