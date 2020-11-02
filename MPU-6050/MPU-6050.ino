@@ -43,6 +43,6 @@ void loop(){
   lcd.print(" | Tmp = "); lcd.print((Tmp/340.00+36.53)*(1.8)+32); lcd.print("°F");
   Serial.print(" | GyX = "); Serial.print(GyX/131); Serial.print("°/s");
   Serial.print(" | GyY = "); Serial.print(GyY/131); Serial.print("°/s");
-  Serial.print(" | GyZ = "); Serial.print(GyZ/131); Serial.print("°/s");
+  Serial.print(" | GyZ = "); Serial.print(GyZ/131); Serial.println("°/s");
   
 }
