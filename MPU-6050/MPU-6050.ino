@@ -1,10 +1,16 @@
 // MPU-6050 Sketch
-//V1.0
+//V1.1
 
 #include<Wire.h>
+#include <LiquidCrystal.h>
+
 const int MPU_addr=0x68;  // I2C address of the MPU-6050
 int16_t AcX,AcY,AcZ,Tmp,GyX,GyY,GyZ;
+LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
+
 void setup(){
+  
+  lcd.begin(16, 2);
   Wire.begin();
   Wire.beginTransmission(MPU_addr);
   Wire.write(0x6B);  // PWR_MGMT_1 register
@@ -34,9 +40,9 @@ void loop(){
   Serial.print(" | AcX = "); Serial.print(AcX/16384); Serial.print(" g");
   Serial.print(" | AcY = "); Serial.print(AcY/16384); Serial.print(" g");
   Serial.print(" | AcZ = "); Serial.print(AcZ/16384); Serial.print(" g");
-  Serial.print(" | Tmp = "); Serial.print(Tmp/340.00+36.53); Serial.print("°C");
+  lcd.print(" | Tmp = "); lcd.print((Tmp/340.00+36.53)*(1.8)+32); lcd.print("°F");
   Serial.print(" | GyX = "); Serial.print(GyX/131); Serial.print("°/s");
   Serial.print(" | GyY = "); Serial.print(GyY/131); Serial.print("°/s");
-  Serial.print(" | GyZ = "); Serial.println(GyZ/131); Serial.print("°/s");
+  Serial.print(" | GyZ = "); Serial.print(GyZ/131); Serial.print("°/s");
   
 }
