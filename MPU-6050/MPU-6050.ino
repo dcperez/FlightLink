@@ -1,5 +1,5 @@
 // MPU-6050 Sketch
-//V1.2
+//V1.3
 
 #include<Wire.h>
 #include <LiquidCrystal.h>
